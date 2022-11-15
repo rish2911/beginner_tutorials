@@ -29,11 +29,11 @@ class MinimalPublisher : public rclcpp::Node {
   : Node("minimal_publisher"), count_(0) {
     publisher_ = this->create_publisher<std_msgs::msg::String>("topic", 10);
     timer_ = this->create_wall_timer(
-      500ms, std::bind(&MinimalPublisher::timer_callback, this));
+      500ms, std::bind(&MinimalPublisher::TimerCallback, this));
   }
 
  private:
-  void timer_callback() {
+  void TimerCallback() {
     auto message = std_msgs::msg::String();
     message.data = "My first ROS2 script! " + std::to_string(count_++);
     RCLCPP_INFO(this->get_logger(), "Published: '%s'", message.data.c_str());
