@@ -1,10 +1,5 @@
-[![Build Status](https://github.com/adithyagaurav/Human_Detection_Tracker/actions/workflows/build_and_coveralls.yml/badge.svg)](https://github.com/adithyagaurav/Human_Detection_Tracker/actions/workflows/build_and_coveralls.yml)
-[![Coverage Status](https://coveralls.io/repos/github/adithyagaurav/Human_Detection_Tracker/badge.svg?branch=master)](https://coveralls.io/github/adithyagaurav/Human_Detection_Tracker?branch=master)
+[![Build Status](https://github.com/rish2911/beginner_tutorials/actions/workflows/build_and_coveralls.yml/badge.svg)](https://github.com/rish2911/beginner_tutorials/actions/workflows/build_and_coveralls.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-
-
-
 
 # ENPM 808X ROS Publisher/Subscriber
 
