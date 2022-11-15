@@ -1,0 +1,19 @@
+[0.018s] Invoking command in '/home/rishabh/pub_sub/build/cpp_pubsub': CMAKE_PREFIX_PATH=/opt/ros/foxy:${CMAKE_PREFIX_PATH} /usr/bin/cmake --build /home/rishabh/pub_sub/build/cpp_pubsub -- -j16 -l16
+[0.051s] [35m[1mScanning dependencies of target talker[0m
+[0.051s] [35m[1mScanning dependencies of target listener[0m
+[0.072s] [ 50%] [32mBuilding CXX object CMakeFiles/listener.dir/src/subscriber_member_function.cpp.o[0m
+[0.072s] [ 50%] [32mBuilding CXX object CMakeFiles/talker.dir/src/publisher_member_function.cpp.o[0m
+[1.211s] [01m[K/home/rishabh/pub_sub/src/cpp_pubsub/src/publisher_member_function.cpp:21:12:[m[K [01;31m[Kerror: [m[Knamespace ‘[01m[Kstd::literals::chrono_literals[m[K’ not allowed in using-declaration
+[1.211s]    21 | using std::[01;31m[Kchrono_literals[m[K;
+[1.211s]       |            [01;31m[K^~~~~~~~~~~~~~~[m[K
+[1.217s] [01m[K/home/rishabh/pub_sub/src/cpp_pubsub/src/publisher_member_function.cpp:[m[K In constructor ‘[01m[KMinimalPublisher::MinimalPublisher()[m[K’:
+[1.217s] [01m[K/home/rishabh/pub_sub/src/cpp_pubsub/src/publisher_member_function.cpp:32:7:[m[K [01;31m[Kerror: [m[Kunable to find numeric literal operator ‘[01m[Koperator""ms[m[K’
+[1.217s]    32 |       [01;31m[K500ms[m[K, std::bind(&MinimalPublisher::timer_callback, this));
+[1.217s]       |       [01;31m[K^~~~~[m[K
+[2.285s] make[2]: *** [CMakeFiles/talker.dir/build.make:63: CMakeFiles/talker.dir/src/publisher_member_function.cpp.o] Error 1
+[2.285s] make[1]: *** [CMakeFiles/Makefile2:107: CMakeFiles/talker.dir/all] Error 2
+[2.285s] make[1]: *** Waiting for unfinished jobs....
+[4.392s] [ 75%] [32m[1mLinking CXX executable listener[0m
+[4.598s] [ 75%] Built target listener
+[4.599s] make: *** [Makefile:141: all] Error 2
+[4.601s] Invoked command in '/home/rishabh/pub_sub/build/cpp_pubsub' returned '2': CMAKE_PREFIX_PATH=/opt/ros/foxy:${CMAKE_PREFIX_PATH} /usr/bin/cmake --build /home/rishabh/pub_sub/build/cpp_pubsub -- -j16 -l16

@@ -8,7 +8,7 @@
 
 # ENPM 808X ROS Publisher/Subscriber
 
-# Team Members
+## Team Members
  - **Driver** : Rishabh Singh (UID - 117511208)
 
 ## Instructions
@@ -28,7 +28,7 @@ Submit your beginner_tutorials "First Publisher/Subscriber" ROS package on GitHu
 
 
 
-# Dependencies
+## Dependencies
 ubuntu 20
 ros2 foxy
 ament_cmake

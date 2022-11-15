@@ -1,0 +1,20 @@
+[0.017s] Invoking command in '/home/rishabh/pub_sub/build/cpp_pubsub': CMAKE_PREFIX_PATH=/opt/ros/foxy:${CMAKE_PREFIX_PATH} /usr/bin/cmake --build /home/rishabh/pub_sub/build/cpp_pubsub -- -j16 -l16
+[0.050s] [35m[1mScanning dependencies of target talker[0m
+[0.051s] [35m[1mScanning dependencies of target listener[0m
+[0.071s] [ 50%] [32mBuilding CXX object CMakeFiles/listener.dir/src/subscriber_member_function.cpp.o[0m
+[0.072s] [ 50%] [32mBuilding CXX object CMakeFiles/talker.dir/src/publisher_member_function.cpp.o[0m
+[0.131s] [01m[K/home/rishabh/pub_sub/src/cpp_pubsub/src/subscriber_member_function.cpp:15:10:[m[K [01;31m[Kfatal error: [m[Kmemory.hpp: No such file or directory
+[0.132s]    15 | #include [01;31m[K<memory.hpp>[m[K
+[0.132s]       |          [01;31m[K^~~~~~~~~~~~[m[K
+[0.133s] compilation terminated.
+[0.133s] [01m[K/home/rishabh/pub_sub/src/cpp_pubsub/src/publisher_member_function.cpp:15:10:[m[K [01;31m[Kfatal error: [m[Kchrono.hpp: No such file or directory
+[0.134s]    15 | #include [01;31m[K<chrono.hpp>[m[K
+[0.134s]       |          [01;31m[K^~~~~~~~~~~~[m[K
+[0.135s] compilation terminated.
+[0.135s] make[2]: *** [CMakeFiles/listener.dir/build.make:63: CMakeFiles/listener.dir/src/subscriber_member_function.cpp.o] Error 1
+[0.135s] make[2]: *** [CMakeFiles/talker.dir/build.make:63: CMakeFiles/talker.dir/src/publisher_member_function.cpp.o] Error 1
+[0.135s] make[1]: *** [CMakeFiles/Makefile2:80: CMakeFiles/listener.dir/all] Error 2
+[0.135s] make[1]: *** Waiting for unfinished jobs....
+[0.135s] make[1]: *** [CMakeFiles/Makefile2:107: CMakeFiles/talker.dir/all] Error 2
+[0.135s] make: *** [Makefile:141: all] Error 2
+[0.137s] Invoked command in '/home/rishabh/pub_sub/build/cpp_pubsub' returned '2': CMAKE_PREFIX_PATH=/opt/ros/foxy:${CMAKE_PREFIX_PATH} /usr/bin/cmake --build /home/rishabh/pub_sub/build/cpp_pubsub -- -j16 -l16

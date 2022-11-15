@@ -1,0 +1,32 @@
+[0.016s] Invoking command in '/home/rishabh/pub_sub/build/cpp_pubsub': CMAKE_PREFIX_PATH=/opt/ros/foxy:${CMAKE_PREFIX_PATH} /usr/bin/cmake --build /home/rishabh/pub_sub/build/cpp_pubsub -- -j16 -l16
+[0.050s] [35m[1mScanning dependencies of target listener[0m
+[0.050s] [35m[1mScanning dependencies of target talker[0m
+[0.071s] [ 50%] [32mBuilding CXX object CMakeFiles/talker.dir/src/publisher_member_function.cpp.o[0m
+[0.071s] [ 50%] [32mBuilding CXX object CMakeFiles/listener.dir/src/subscriber_member_function.cpp.o[0m
+[2.813s] [ 75%] [32m[1mLinking CXX executable talker[0m
+[2.937s] [ 75%] Built target talker
+[4.297s] [100%] [32m[1mLinking CXX executable listener[0m
+[4.468s] [100%] Built target listener
+[4.476s] Invoked command in '/home/rishabh/pub_sub/build/cpp_pubsub' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy:${CMAKE_PREFIX_PATH} /usr/bin/cmake --build /home/rishabh/pub_sub/build/cpp_pubsub -- -j16 -l16
+[4.504s] Invoking command in '/home/rishabh/pub_sub/build/cpp_pubsub': CMAKE_PREFIX_PATH=/opt/ros/foxy:${CMAKE_PREFIX_PATH} /usr/bin/cmake --install /home/rishabh/pub_sub/build/cpp_pubsub
+[4.510s] -- Install configuration: ""
+[4.510s] -- Installing: /home/rishabh/pub_sub/install/cpp_pubsub/lib/cpp_pubsub/talker
+[4.511s] -- Set runtime path of "/home/rishabh/pub_sub/install/cpp_pubsub/lib/cpp_pubsub/talker" to ""
+[4.511s] -- Installing: /home/rishabh/pub_sub/install/cpp_pubsub/lib/cpp_pubsub/listener
+[4.512s] -- Set runtime path of "/home/rishabh/pub_sub/install/cpp_pubsub/lib/cpp_pubsub/listener" to ""
+[4.512s] -- Installing: /home/rishabh/pub_sub/install/cpp_pubsub/share/ament_index/resource_index/package_run_dependencies/cpp_pubsub
+[4.513s] -- Installing: /home/rishabh/pub_sub/install/cpp_pubsub/share/ament_index/resource_index/parent_prefix_path/cpp_pubsub
+[4.513s] -- Installing: /home/rishabh/pub_sub/install/cpp_pubsub/share/cpp_pubsub/environment/ament_prefix_path.sh
+[4.513s] -- Installing: /home/rishabh/pub_sub/install/cpp_pubsub/share/cpp_pubsub/environment/ament_prefix_path.dsv
+[4.513s] -- Installing: /home/rishabh/pub_sub/install/cpp_pubsub/share/cpp_pubsub/environment/path.sh
+[4.513s] -- Installing: /home/rishabh/pub_sub/install/cpp_pubsub/share/cpp_pubsub/environment/path.dsv
+[4.513s] -- Installing: /home/rishabh/pub_sub/install/cpp_pubsub/share/cpp_pubsub/local_setup.bash
+[4.513s] -- Installing: /home/rishabh/pub_sub/install/cpp_pubsub/share/cpp_pubsub/local_setup.sh
+[4.513s] -- Installing: /home/rishabh/pub_sub/install/cpp_pubsub/share/cpp_pubsub/local_setup.zsh
+[4.513s] -- Installing: /home/rishabh/pub_sub/install/cpp_pubsub/share/cpp_pubsub/local_setup.dsv
+[4.513s] -- Installing: /home/rishabh/pub_sub/install/cpp_pubsub/share/cpp_pubsub/package.dsv
+[4.513s] -- Installing: /home/rishabh/pub_sub/install/cpp_pubsub/share/ament_index/resource_index/packages/cpp_pubsub
+[4.514s] -- Installing: /home/rishabh/pub_sub/install/cpp_pubsub/share/cpp_pubsub/cmake/cpp_pubsubConfig.cmake
+[4.514s] -- Installing: /home/rishabh/pub_sub/install/cpp_pubsub/share/cpp_pubsub/cmake/cpp_pubsubConfig-version.cmake
+[4.514s] -- Installing: /home/rishabh/pub_sub/install/cpp_pubsub/share/cpp_pubsub/package.xml
+[4.517s] Invoked command in '/home/rishabh/pub_sub/build/cpp_pubsub' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy:${CMAKE_PREFIX_PATH} /usr/bin/cmake --install /home/rishabh/pub_sub/build/cpp_pubsub
