@@ -1,6 +1,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # ENPM 808X ROS Publisher/Subscriber
+## Overview
+This repository contains tutorials from ROS2 Beginner: Client libraries. The tutorials cover publishers, subscribers, services, logging, and launch files with respect to the ROS2 Foxy.
 
 ## Team Members
  - **Driver** : Rishabh Singh (UID - 117511208)
@@ -23,23 +25,22 @@ Submit your beginner_tutorials "First Publisher/Subscriber" ROS package on GitHu
 
 
 ## Dependencies
-ubuntu 20
-ros2 foxy
-ament_cmake
-rclcpp
-std_msgs
+- **ubuntu 20**
+- **ros2 foxy**
+- **ament_cmake**
+- **rclcpp**
+- **std_msgs**
 
 ## Clone and Build
 
-1. Make a directory using command "mkdir name_of_your_directory"
-2. cd name name_of_your_directory
-3. git clone  ....
-4. rosdep install -i --from-path src --rosdistro foxy -y (for installing dependencies)
-5. colcon build
+    Make a directory using command "mkdir name_of_your_directory"
+    cd name name_of_your_directory
+    git clone  ....
+    rosdep install -i --from-path src --rosdistro foxy -y (for installing dependencies)
+    colcon build
 
-## Run
-
-1. Open a new terminal, navigate to name_of_your_directory, and source the setup files:
+## Running publisher and subscriber
+    Open a new terminal, navigate to name_of_your_directory, and source the setup files:
     . install/setup.bash
-2. ros2 run cpp_pubsub talker (for publisher)
-3. ros2 run cpp_pubsub listener (for subscriber)
+    ros2 run cpp_pubsub talker
+    ros2 run cpp_pubsub listener
