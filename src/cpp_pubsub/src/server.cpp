@@ -30,6 +30,9 @@ class MinimalPublisher : public rclcpp::Node {
     publisher_ = this->create_publisher<std_msgs::msg::String>("topic", 10);
     timer_ = this->create_wall_timer(
       500ms, std::bind(&MinimalPublisher::TimerCallback, this));
+    
+    service_ = this->create_service<std_msgs::msg::String>("minimal_publisher", &ChangeMessage);
+  RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Ready to change message.");
   }
 
  private:
@@ -39,8 +42,18 @@ class MinimalPublisher : public rclcpp::Node {
     RCLCPP_INFO(this->get_logger(), "Published: '%s'", message.data.c_str());
     publisher_->publish(message);
   }
+
+  void ChangeMessage(const std::shared_ptr<std_msgs::msg::String> request,
+          std::shared_ptr<std_msgs::msg::String>      response)
+{
+  response->data = request->data;
+  RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Incoming request\na: %ld" " b: %ld",
+                request->data);
+  RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "sending back response: [%ld]", (long int)response->data);
+}
   rclcpp::TimerBase::SharedPtr timer_;
   rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
+  rclcpp::Service<std_msgs::msg::String>::SharedPtr service_;
   size_t count_;
 };
 

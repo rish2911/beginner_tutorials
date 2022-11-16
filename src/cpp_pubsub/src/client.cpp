@@ -31,6 +31,8 @@ class MinimalSubscriber : public rclcpp::Node {
     RCLCPP_INFO(this->get_logger(), "Okay, okay, so what?: '%s'", \
     msg->data.c_str());
   }
+
+  
   rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
 };
 
