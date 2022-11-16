@@ -33,7 +33,7 @@ std_msgs
 
 1. Make a directory using command "mkdir name_of_your_directory"
 2. cd name name_of_your_directory
-3. git clone  ....
+3. git clone https://github.com/rish2911/beginner_tutorials.git
 4. rosdep install -i --from-path src --rosdistro foxy -y (for installing dependencies)
 5. colcon build
 
