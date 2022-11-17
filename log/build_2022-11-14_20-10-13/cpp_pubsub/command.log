@@ -1,4 +1,0 @@
-Invoking command in '/home/rishabh/pub_sub/build/cpp_pubsub': CMAKE_PREFIX_PATH=/home/rishabh/pub_sub/install/cpp_pubsub:/opt/ros/foxy:/opt/ros/noetic /usr/bin/cmake --build /home/rishabh/pub_sub/build/cpp_pubsub -- -j16 -l16
-Invoked command in '/home/rishabh/pub_sub/build/cpp_pubsub' returned '0': CMAKE_PREFIX_PATH=/home/rishabh/pub_sub/install/cpp_pubsub:/opt/ros/foxy:/opt/ros/noetic /usr/bin/cmake --build /home/rishabh/pub_sub/build/cpp_pubsub -- -j16 -l16
-Invoking command in '/home/rishabh/pub_sub/build/cpp_pubsub': CMAKE_PREFIX_PATH=/home/rishabh/pub_sub/install/cpp_pubsub:/opt/ros/foxy:/opt/ros/noetic /usr/bin/cmake --install /home/rishabh/pub_sub/build/cpp_pubsub
-Invoked command in '/home/rishabh/pub_sub/build/cpp_pubsub' returned '0': CMAKE_PREFIX_PATH=/home/rishabh/pub_sub/install/cpp_pubsub:/opt/ros/foxy:/opt/ros/noetic /usr/bin/cmake --install /home/rishabh/pub_sub/build/cpp_pubsub
