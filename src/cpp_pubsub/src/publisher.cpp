@@ -12,14 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <chrono>
-#include <memory>
-
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
+#include "cpp_pubsub/srv/integ.hpp"
+
+#include <chrono>
+#include <memory>
+#include <string>
+
+
 
 using namespace std::chrono_literals;
-
+using Integ = cpp_pubsub::srv::Integ;
+using namespace std::placeholders;
 /* This example creates a subclass of Node and uses std::bind() to register a
  * member function as a callback from the timer. */
 
@@ -29,9 +34,10 @@ class MinimalPublisher : public rclcpp::Node {
   : Node("minimal_publisher"), count_(0) {
     publisher_ = this->create_publisher<std_msgs::msg::String>("topic", 10);
     timer_ = this->create_wall_timer(
-      500ms, std::bind(&MinimalPublisher::TimerCallback, this));
+      5000ms, std::bind(&MinimalPublisher::TimerCallback, this));
     
-    service_ = this->create_service<cpp_pubsub::srv::integ>("service to minimal_publisher", &ChangeMessage);
+    service_ = this->create_service<Integ>("service_to_minimal_publisher", \
+    std::bind(&MinimalPublisher::ChangeMessage, this, _1, _2));
   RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Ready to change message.");
   }
 
@@ -43,18 +49,22 @@ class MinimalPublisher : public rclcpp::Node {
     publisher_->publish(message);
   }
 
-  void ChangeMessage(const std::shared_ptr<cpp_pubsub::srv::integ::Request> request,
-          std::shared_ptr<cpp_pubsub::srv::integ::Response> response)
+  void ChangeMessage(const std::shared_ptr<Integ::Request> request,
+          std::shared_ptr<Integ::Response> response)
 {
   response->b = request->a;
-  RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Incoming request\n: [%ld]",
-                request->a);
-  RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "sending back response: [%ld]", response->b);
+  RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Incoming request\n: [%s]",
+                request->a.c_str());
+  RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "sending back response: [%s]", response->b.c_str());
+  RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "Now, shutting down ROS")
+  rclcpp::shutdown();
 }
   rclcpp::TimerBase::SharedPtr timer_;
   rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
-  rclcpp::Service<cpp_pubsub::srv::integ>::SharedPtr service_;
+  rclcpp::Service<Integ>::SharedPtr service_;
   size_t count_;
+  // const std::shared_ptr<Integ::Request> request;
+  // std::shared_ptr<Integ::Response> response;
 };
 
 int main(int argc, char * argv[]) {
