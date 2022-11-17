@@ -31,7 +31,7 @@ class MinimalPublisher : public rclcpp::Node {
     timer_ = this->create_wall_timer(
       500ms, std::bind(&MinimalPublisher::TimerCallback, this));
     
-    service_ = this->create_service<std_msgs::msg::String>("minimal_publisher", &ChangeMessage);
+    service_ = this->create_service<cpp_pubsub::srv::integ>("service to minimal_publisher", &ChangeMessage);
   RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Ready to change message.");
   }
 
@@ -43,17 +43,17 @@ class MinimalPublisher : public rclcpp::Node {
     publisher_->publish(message);
   }
 
-  void ChangeMessage(const std::shared_ptr<std_msgs::msg::String> request,
-          std::shared_ptr<std_msgs::msg::String>      response)
+  void ChangeMessage(const std::shared_ptr<cpp_pubsub::srv::integ::Request> request,
+          std::shared_ptr<cpp_pubsub::srv::integ::Response> response)
 {
-  response->data = request->data;
-  RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Incoming request\na: %ld" " b: %ld",
-                request->data);
-  RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "sending back response: [%ld]", (long int)response->data);
+  response->b = request->a;
+  RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Incoming request\n: [%ld]",
+                request->a);
+  RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "sending back response: [%ld]", response->b);
 }
   rclcpp::TimerBase::SharedPtr timer_;
   rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
-  rclcpp::Service<std_msgs::msg::String>::SharedPtr service_;
+  rclcpp::Service<cpp_pubsub::srv::integ>::SharedPtr service_;
   size_t count_;
 };
 
