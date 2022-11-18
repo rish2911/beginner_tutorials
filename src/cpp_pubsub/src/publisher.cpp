@@ -76,27 +76,27 @@ class MinimalPublisher : public rclcpp::Node {
 
  
   if (msg== "debug") {
-  RCLCPP_DEBUG(this->get_logger(), "sending back log for: [%s]", response->b.c_str());
+  RCLCPP_DEBUG_STREAM(this->get_logger(), "sending back log for: [%s]"<< response->b.c_str());
   }
 
   else if (msg== "info") {
-  RCLCPP_INFO(this->get_logger(), "sending back log for: [%s]", response->b.c_str());
+  RCLCPP_INFO_STREAM(this->get_logger(), "sending back log for: [%s]"<< response->b.c_str());
   }
 
   else if (msg== "warn") {
-  RCLCPP_WARN(this->get_logger(), "sending back log for: [%s]", response->b.c_str());
+  RCLCPP_WARN_STREAM(this->get_logger(), "sending back log for: [%s]"<< response->b.c_str());
   }
 
   else if (msg== "fatal") {
-  RCLCPP_FATAL(this->get_logger(), "sending back log for: [%s]", response->b.c_str());
+  RCLCPP_FATAL_STREAM(this->get_logger(), "sending back log for: [%s]"<< response->b.c_str());
   }
 
   else if (msg== "error") {
-  RCLCPP_ERROR(this->get_logger(), "sending back log for: [%s]", response->b.c_str());
+  RCLCPP_ERROR_STREAM(this->get_logger(), "sending back log for: [%s]"<< response->b.c_str());
   }
 
   else {
-  RCLCPP_WARN(this->get_logger(), "sending back log for: [%s]", "Not the desired\
+  RCLCPP_WARN_STREAM(this->get_logger(), "sending back log for: [%s]"<< "Not the desired\
   argument, expected [debug], [info], [warn], [fatal], [error]");
   }
 
