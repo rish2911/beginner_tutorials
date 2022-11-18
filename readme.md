@@ -61,4 +61,4 @@ and also to display different logging levels
 2. ros2 launch cpp_pubsub cpp_pubsub.yaml
 
 ## rqt console results
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![RQT](https://github.com/rish2911/beginner_tutorials/blob/Week10_HW/src/cpp_pubsub/results/rqt_console.png)
