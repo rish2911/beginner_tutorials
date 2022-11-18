@@ -43,4 +43,8 @@ install(TARGETS
   client_c
   DESTINATION lib/${PROJECT_NAME})
 
+install(
+  DIRECTORY launch
+  DESTINATION share/${PROJECT_NAME})
+
 ament_package()
