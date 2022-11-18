@@ -67,71 +67,65 @@ class MinimalPublisher : public rclcpp::Node {
 
     auto descript = rcl_interfaces::msg::ParameterDescriptor{};
     descript.description =
-        "\nThis parameter modifies the queue size for the message published\
-         on the topic";
+        "\nThis parameter modifies the queue size";
     this->declare_parameter("queue", queues_, descript);
     queues_ = this->get_parameter("queue").get_parameter_value().get<int>();
-    RCLCPP_INFO_STREAM(this->get_logger(), "Setting queue size to: " << queues_);
-
-
-    publisher_ = this->create_publisher<std_msgs::msg::String>("topic", queues_);
+    RCLCPP_INFO_STREAM(this->get_logger(), \
+    "Setting queue size to: " << queues_);
+    publisher_ = this->create_publisher<std_msgs::msg::String>\
+    ("topic", queues_);
     timer_ = this->create_wall_timer(
       5000ms, std::bind(&MinimalPublisher::TimerCallback, this));
-    
     service_ = this->create_service<Integ>("service_to_minimal_publisher", \
     std::bind(&MinimalPublisher::ChangeMessage, this, _1, _2));
   RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Ready to change message.");
-  }
+}
 
- 
  private:
+  /**
+   * @brief Callback from timer
+   *
+   */
   void TimerCallback() {
     auto message = std_msgs::msg::String();
     message.data = "My first ROS2 script! " + std::to_string(count_++);
     RCLCPP_INFO(this->get_logger(), "Published: '%s'", message.data.c_str());
     publisher_->publish(message);
   }
-
+  /**
+   * @brief Method based on client request to change the base string
+   * and also to set the different logger levels based on different
+   * input
+   * @param request
+   * @param response
+   */
   void ChangeMessage(const std::shared_ptr<Integ::Request> request,
-          std::shared_ptr<Integ::Response> response)
-{
+          std::shared_ptr<Integ::Response> response) {
   response->b = request->a;
   RCLCPP_INFO(this->get_logger(), "Incoming request\n: [%s]",
                 request->a.c_str());
-  
-  std::string msg;  
+  std::string msg;
   msg = std::string(response->b.c_str());
-  std::cout<<msg;
-
- 
   if (msg== "debug") {
-  RCLCPP_DEBUG_STREAM(this->get_logger(), "sending back log for: [%s]"<< response->b.c_str());
+  RCLCPP_DEBUG_STREAM(this->get_logger(), "sending back log for: [%s]"\
+  << response->b.c_str());
+  } else if (msg== "info") {
+  RCLCPP_INFO_STREAM(this->get_logger(), "sending back log for: [%s]"\
+  << response->b.c_str());
+  } else if (msg== "warn") {
+  RCLCPP_WARN_STREAM(this->get_logger(), "sending back log for: [%s]"\
+  << response->b.c_str());
+  } else if (msg== "fatal") {
+  RCLCPP_FATAL_STREAM(this->get_logger(), "sending back log for: [%s]"\
+  << response->b.c_str());
+  } else if (msg== "error") {
+  RCLCPP_ERROR_STREAM(this->get_logger(), "sending back log for: [%s]"\
+  << response->b.c_str());
+  } else {
+  RCLCPP_WARN_STREAM(this->get_logger(), "sending back log for: [%s]"\
+  << "Not the desired argument, expected");
   }
-
-  else if (msg== "info") {
-  RCLCPP_INFO_STREAM(this->get_logger(), "sending back log for: [%s]"<< response->b.c_str());
-  }
-
-  else if (msg== "warn") {
-  RCLCPP_WARN_STREAM(this->get_logger(), "sending back log for: [%s]"<< response->b.c_str());
-  }
-
-  else if (msg== "fatal") {
-  RCLCPP_FATAL_STREAM(this->get_logger(), "sending back log for: [%s]"<< response->b.c_str());
-  }
-
-  else if (msg== "error") {
-  RCLCPP_ERROR_STREAM(this->get_logger(), "sending back log for: [%s]"<< response->b.c_str());
-  }
-
-  else {
-  RCLCPP_WARN_STREAM(this->get_logger(), "sending back log for: [%s]"<< "Not the desired\
-  argument, expected [debug], [info], [warn], [fatal], [error]");
-  }
-
 }
-
-
   rclcpp::TimerBase::SharedPtr timer_;
   rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
   rclcpp::Service<Integ>::SharedPtr service_;
