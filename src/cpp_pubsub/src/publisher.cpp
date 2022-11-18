@@ -12,13 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "rclcpp/rclcpp.hpp"
-#include "std_msgs/msg/string.hpp"
-#include "cpp_pubsub/srv/integ.hpp"
 
 #include <chrono>
 #include <memory>
 #include <string>
+#include <map>
+
+
+#include "rclcpp/rclcpp.hpp"
+#include "std_msgs/msg/string.hpp"
+#include "cpp_pubsub/srv/integ.hpp"
+#include <rcl_interfaces/msg/detail/parameter_descriptor__struct.hpp>
 
 
 
@@ -32,6 +36,16 @@ class MinimalPublisher : public rclcpp::Node {
  public:
   MinimalPublisher()
   : Node("minimal_publisher"), count_(0) {
+    if (rcutils_logging_set_logger_level(
+            this->get_logger().get_name(),
+            RCUTILS_LOG_SEVERITY::RCUTILS_LOG_SEVERITY_DEBUG) ==
+        RCUTILS_RET_OK) {
+      RCLCPP_INFO_STREAM(this->get_logger(), "Set logger level DEBUG success.");
+    } else {
+      RCLCPP_ERROR_STREAM(this->get_logger(), "Set logger level DEBUG fails.");
+    }
+
+
     publisher_ = this->create_publisher<std_msgs::msg::String>("topic", 10);
     timer_ = this->create_wall_timer(
       5000ms, std::bind(&MinimalPublisher::TimerCallback, this));
@@ -53,18 +67,46 @@ class MinimalPublisher : public rclcpp::Node {
           std::shared_ptr<Integ::Response> response)
 {
   response->b = request->a;
-  RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Incoming request\n: [%s]",
+  RCLCPP_INFO(this->get_logger(), "Incoming request\n: [%s]",
                 request->a.c_str());
-  RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "sending back response: [%s]", response->b.c_str());
-  RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "Now, shutting down ROS")
-  rclcpp::shutdown();
+  
+  std::string msg;  
+  msg = std::string(response->b.c_str());
+  std::cout<<msg;
+
+ 
+  if (msg== "debug") {
+  RCLCPP_DEBUG(this->get_logger(), "sending back log for: [%s]", response->b.c_str());
+  }
+
+  else if (msg== "info") {
+  RCLCPP_INFO(this->get_logger(), "sending back log for: [%s]", response->b.c_str());
+  }
+
+  else if (msg== "warn") {
+  RCLCPP_WARN(this->get_logger(), "sending back log for: [%s]", response->b.c_str());
+  }
+
+  else if (msg== "fatal") {
+  RCLCPP_FATAL(this->get_logger(), "sending back log for: [%s]", response->b.c_str());
+  }
+
+  else if (msg== "error") {
+  RCLCPP_ERROR(this->get_logger(), "sending back log for: [%s]", response->b.c_str());
+  }
+
+  else {
+  RCLCPP_WARN(this->get_logger(), "sending back log for: [%s]", "Not the desired\
+  argument, expected [debug], [info], [warn], [fatal], [error]");
+  }
+
 }
+
+
   rclcpp::TimerBase::SharedPtr timer_;
   rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
   rclcpp::Service<Integ>::SharedPtr service_;
   size_t count_;
-  // const std::shared_ptr<Integ::Request> request;
-  // std::shared_ptr<Integ::Response> response;
 };
 
 int main(int argc, char * argv[]) {
