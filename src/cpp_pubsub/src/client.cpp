@@ -42,7 +42,7 @@ using namespace std::chrono_literals;
 int main(int argc, char **argv) {
   rclcpp::init(argc, argv);
 
-//since only one argument is provided and 1 is accepted
+// since only one argument is provided and 1 is accepted
   if (argc != 2) {
       RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "usage: write a string");
       return 1;

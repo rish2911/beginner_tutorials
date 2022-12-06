@@ -1,2 +1,4 @@
-Done processing publisher_member_function.cpp
-Done processing subscriber_member_function.cpp
+Done processing ./src/client.cpp
+Done processing ./src/publisher.cpp
+Done processing ./src/subscriber.cpp
+Done processing ./test/test.cpp

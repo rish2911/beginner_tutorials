@@ -138,14 +138,14 @@ class MinimalPublisher : public rclcpp::Node {
 
   void broadcast_callback() {
     tf2::Quaternion tf2_quaternion;
-    tf2_quaternion.setRPY(0, 1.57, 3.14);
+    tf2_quaternion.setRPY(0, 3.14, 3.14);
 
     geometry_msgs::msg::TransformStamped t;
     t.header.stamp = this->get_clock()->now();
     t.header.frame_id = "world";
     t.child_frame_id = "talk";
-    t.transform.translation.x = 5.0;
-    t.transform.translation.y = 6.0;
+    t.transform.translation.x = 3.0;
+    t.transform.translation.y = 2.0;
     t.transform.translation.z = 7.0;
     t.transform.rotation.x = tf2_quaternion.x();
     t.transform.rotation.y = tf2_quaternion.y();
