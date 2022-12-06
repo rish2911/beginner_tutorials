@@ -1,6 +1,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-# ENPM 808X ROS Publisher/Subscriber
+# ENPM 808X ROS Publisher/Subscriber/Services/tf2/unit-testing/ROSbag
 ## Overview
 This repository contains tutorials from ROS2 Beginner: Client libraries. The tutorials cover publishers, subscribers, services, logging, and launch files with respect to the ROS2 Foxy.
 
@@ -44,6 +44,13 @@ This repository contains tutorials from ROS2 Beginner: Client libraries. The tut
     1. Open a new terminal, navigate to name_of_your_directory, and source the setup files:
         source "your_colcon_workspace"/install/setup.bash
     2. ros2 launch cpp_pubsub cpp_pubsub.yaml
+
+## Running the launch file with rosbag record and listening
+    1. Open a new terminal, navigate to name_of_your_directory, and source the setup files:
+        source "your_colcon_workspace"/install/setup.bash
+    2. ros2 launch cpp_pubsub rosbag_launch.py record:=True
+    3. ros2 bag play recorded_cpppubsub_bag
+    4. ros2 run cpp_pubsub listener
 
 ## rqt console results
 ![RQT](https://github.com/rish2911/beginner_tutorials/blob/Week10_HW/src/cpp_pubsub/results/rqt_console.png)
