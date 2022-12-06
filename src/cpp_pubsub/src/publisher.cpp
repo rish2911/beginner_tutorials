@@ -135,7 +135,10 @@ class MinimalPublisher : public rclcpp::Node {
   << "Not the desired argument, expected");
   }
 }
-
+  /**
+   * @brief Method for broadcasting transforms
+   * 
+   */
   void broadcast_callback() {
     tf2::Quaternion tf2_quaternion;
     tf2_quaternion.setRPY(0, 3.14, 3.14);
